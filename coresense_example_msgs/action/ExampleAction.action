@@ -1,0 +1,6 @@
+coresense_example_msgs/ExampleActionInputPort1 input
+---
+coresense_example_msgs/ExampleActionOutput result
+---
+string status
+

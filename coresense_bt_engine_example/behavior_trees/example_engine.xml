@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="ExampleEngine">
+    <Sequence>
+      <ExampleAction action_name="" example_engine_first_step_port1="{port1}" example_engine_first_step_output="{output}"/>
+      <ExampleService action_name="" example_engine_second_step_port1="{port}" example_engine_second_step_output="{output}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>
