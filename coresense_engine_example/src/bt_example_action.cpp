@@ -1,15 +1,15 @@
 #include "behaviortree_ros2/plugins.hpp"
 
-#include "coresense_bt_engine_example/bt_example_action.hpp"
+#include "coresense_engine_example/bt_example_action.hpp"
 
 
 bool ExampleAction::setGoal(ExampleAction::Goal& goal)
 {
   // TODO: abstract away this call so that code isn't copied
-  if (!getInput<coresense_example_msgs::msg::ExampleActionInputPort1>("port1", goal.input))
+  if (!getInput<coresense_example_msgs::msg::ExampleActionInput>("some_input_name", goal.input))
   {
     RCLCPP_ERROR(logger(), "%s: setGoal with error: no blackboard entry for {%s}", 
-        name().c_str(), "port1");
+        name().c_str(), "some_input_name");
     return false;
 
   }
@@ -23,7 +23,7 @@ BT::NodeStatus ExampleAction::onResultReceived(const WrappedResult& wr)
   coresense_example_msgs::msg::ExampleActionOutput output;
   output = wr.result->result;
 
-  setOutput<coresense_example_msgs::msg::ExampleActionOutput>("output", output);
+  setOutput<coresense_example_msgs::msg::ExampleActionOutput>("some_output_name", output);
   return BT::NodeStatus::SUCCESS;
 }
 

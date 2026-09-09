@@ -3,7 +3,7 @@
 
 #include <behaviortree_ros2/bt_action_node.hpp>
 #include <coresense_example_msgs/action/example_action.hpp>
-#include "coresense_example_msgs/msg/example_action_input_port1.hpp"
+#include "coresense_example_msgs/msg/example_action_input.hpp"
 #include <coresense_example_msgs/msg/example_action_output.hpp>
 #include <string>
 
@@ -27,11 +27,11 @@ public:
   static BT::PortsList providedPorts()
   {    
     return providedBasicPorts({ 
-        BT::InputPort<coresense_example_msgs::msg::ExampleActionInputPort1>(
-            "port1",
+        BT::InputPort<coresense_example_msgs::msg::ExampleActionInput>(
+            "some_input_name",
             "The first input of the action."),
         BT::OutputPort<coresense_example_msgs::msg::ExampleActionOutput>(
-            "output",
+            "some_output_name",
             "The result of the action"),
         });
   }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="ExampleEngine">
+    <Sequence>
+      <ExampleService some_input_name="{some_input_name}" some_output_name="{some_output_name}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

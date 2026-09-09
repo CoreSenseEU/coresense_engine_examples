@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(coresense_bt_engine_example)
+project(coresense_engine_example)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -29,6 +29,12 @@ set(DEPENDENCIES
   #rclcpp
 )
 
+add_library(example_service SHARED src/example_service.cpp)
+target_include_directories(example_service PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+ament_target_dependencies(example_service ${DEPENDENCIES})
 
 add_library(example_action_plugin SHARED src/bt_example_action.cpp)
 target_include_directories(example_action_plugin PUBLIC
@@ -38,6 +44,14 @@ target_include_directories(example_action_plugin PUBLIC
 target_compile_definitions(example_action_plugin PRIVATE BT_PLUGIN_EXPORT)
 ament_target_dependencies(example_action_plugin ${DEPENDENCIES})
 
+
+add_library(example_service_plugin SHARED src/bt_example_service.cpp)
+target_include_directories(example_service_plugin PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+target_compile_definitions(example_service_plugin PRIVATE BT_PLUGIN_EXPORT)
+ament_target_dependencies(example_service_plugin ${DEPENDENCIES})
 
 
 if(BUILD_TESTING)
@@ -55,13 +69,16 @@ endif()
 
 ### Install targets and directories
 install(TARGETS
-  example_action_plugin
+  example_service
+  #  example_action_plugin
+  #  example_service_plugin
   DESTINATION lib/${PROJECT_NAME}
 )
 
 # Install plugins for other packages to load# Install plugins for other packages to load
 install(TARGETS
   example_action_plugin
+  example_service_plugin
   LIBRARY DESTINATION share/${PROJECT_NAME}/bt_plugins
   ARCHIVE DESTINATION share/${PROJECT_NAME}/bt_plugins
   RUNTIME DESTINATION share/${PROJECT_NAME}/bt_plugins

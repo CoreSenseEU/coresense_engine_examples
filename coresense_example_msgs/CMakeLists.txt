@@ -17,10 +17,10 @@ find_package(action_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "action/ExampleAction.action"
-  "msg/ExampleActionInputPort1.msg"
+  "msg/ExampleActionInput.msg"
   "msg/ExampleActionOutput.msg"
   "srv/ExampleService.srv"
-  "msg/ExampleServiceInputPort1.msg"
+  "msg/ExampleServiceInput.msg"
   "msg/ExampleServiceOutput.msg"
   DEPENDENCIES action_msgs std_msgs geometry_msgs)
 

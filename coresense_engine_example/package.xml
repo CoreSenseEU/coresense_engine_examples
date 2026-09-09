@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>coresense_bt_engine_example</name>
+  <name>coresense_engine_example</name>
   <version>0.0.0</version>
   <description>Example for a CoreSense BehaviorTree Action Engine Node</description>
   <maintainer email="A.Gabriel@tudelft.nl">Alex Quin Gabriel</maintainer>
